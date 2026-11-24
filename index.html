@@ -83,25 +83,31 @@ button{font:inherit;color:inherit}
 }
 
 /* ── hero ── */
-.hero{min-height:calc(100svh - 64px);display:grid;place-items:center;padding:clamp(28px,6vh,72px) 0 clamp(36px,8vh,90px);position:relative;isolation:isolate}
-.hero-in{width:min(720px,100% - 2*var(--gutter));text-align:center;display:grid;gap:clamp(18px,3vh,28px);justify-items:center}
+.hero{min-height:calc(100svh - 64px);display:grid;align-items:center;padding:clamp(28px,6vh,72px) 0 clamp(36px,8vh,90px);position:relative;isolation:isolate}
+.hero-in{text-align:left;display:grid;gap:clamp(16px,2.6vh,24px);justify-items:start}
 .hello{font-size:.95rem;color:var(--muted);display:inline-flex;align-items:center;gap:8px;background:var(--bg-2);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
 .hello .live{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 color-mix(in srgb,var(--green) 60%,transparent);animation:ping 2.2s infinite}
 @keyframes ping{70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
 h1.name{font-family:"Outfit",sans-serif;font-weight:600;font-size:var(--fs-hero);line-height:1;letter-spacing:-.035em;margin:0}
 h1.name .l{display:inline-block;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
 h1.name:hover .l{transform:translateY(-6px)}
-h1.name{position:relative;padding-bottom:.16em}h1.name::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(60%,7.2em);height:.09em;border-radius:99px;background:linear-gradient(90deg,var(--blue) 0 25%,var(--red) 25% 50%,var(--yellow) 50% 75%,var(--green) 75%)}h1.name .l:hover{color:var(--blue)}
+h1.name{position:relative;padding-bottom:.16em}h1.name::after{content:"";position:absolute;left:0;bottom:0;width:min(60%,7.2em);height:.09em;border-radius:99px;background:linear-gradient(90deg,var(--blue) 0 25%,var(--red) 25% 50%,var(--yellow) 50% 75%,var(--green) 75%)}h1.name .l:hover{color:var(--blue)}
 h1.name .sp{display:inline-block;width:.28em}
 .role{font-size:clamp(1.05rem,1rem + .6vw,1.35rem);color:var(--ink-2);margin:-6px 0 0}
-.sub{margin:-10px 0 0;font-size:.95rem;color:var(--muted);letter-spacing:.02em}
+.sub{margin:-8px 0 0;font-size:.95rem;color:var(--muted);letter-spacing:.02em}
 .role .typed{color:var(--ink);font-weight:600;border-right:2px solid var(--blue);padding-right:2px}
 .hero .sbox{max-width:620px}
-.certs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:640px}
-.certs a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:.84rem;font-weight:500;color:var(--ink-2);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 13px;transition:background .15s,border-color .15s,color .15s,transform .15s}
+.certs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start;max-width:980px}
+.certs a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:.9rem;font-weight:500;color:var(--ink-2);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 15px;transition:background .15s,border-color .15s,color .15s,transform .15s}
 .certs a:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
-.certs i{width:8px;height:8px;border-radius:50%;flex:none}
-.hero-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.certs svg{width:15px;height:15px;flex:none;color:var(--green)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-start;margin-top:4px}
+.intro{margin:0;max-width:60ch;color:var(--muted);font-size:clamp(1rem,.96rem + .25vw,1.12rem);line-height:1.7}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:12px 24px;font-weight:500;font-size:1rem;transition:background .15s,box-shadow .2s,transform .15s}
+.btn:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+:root[data-theme="dark"] .btn.primary{color:#0b1b33}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primary{color:#0b1b33}}
 .pill.big{padding:11px 20px;font-size:.95rem;transition:background .15s,box-shadow .2s,transform .15s}.pill.big:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
 /* orbit background */
 .orbit{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
@@ -114,6 +120,7 @@ h1.name .sp{display:inline-block;width:.28em}
 .scroll-cue{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:.8rem;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none}
 .scroll-cue svg{width:18px;animation:bob 1.8s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(5px)}}
+@media (max-width:640px),(max-height:760px){.scroll-cue{display:none}}
 
 /* buttons */
 .pill{display:inline-flex;align-items:center;gap:7px;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:.88rem;font-weight:500;background:var(--surface);cursor:pointer;color:var(--ink)}
@@ -215,11 +222,11 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);font-size:.85rem;
       <h1 class="name rv" id="heroName" aria-label="Deepak Kiran Y">Deepak Kiran Y</h1>
       <p class="role rv">Cloud engineer who <span class="typed" id="typed">keeps Azure running</span></p>
       <p class="sub rv" id="sub">Azure · AWS · Microsoft 365</p>
+      <p class="intro rv" id="intro"></p>
       <ul class="certs rv" id="certs" aria-label="Certifications"></ul>
       <div class="hero-btns rv">
-        <a class="pill primary big" href="#guides"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z"/></svg>See my guides</a>
-        <a class="pill big" id="cvLink" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Résumé</a>
-        <a class="pill big" id="liLink" href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn primary" href="#guides">See my guides</a>
+        <a class="btn" href="#contact">Get in touch</a>
       </div>
     </div>
     <a class="scroll-cue" href="#guides" aria-label="Scroll to guides"><span>Scroll</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></a>
@@ -273,6 +280,7 @@ const PROFILE = {
   name: "Deepak Kiran Y",
   role: "Cloud Engineer · Azure & AWS",
   subline: "Azure · AWS · Microsoft 365",
+  intro: "Cloud engineer with 2+ years across Azure, AWS and Microsoft 365 environments: hybrid networking, Zero Trust and security monitoring. I also turn what I learn into free guides anyone can use.",
   availability: "Based in Chennai, India",
   location: "Chennai, India (IST, UTC+05:30)",
   email: "dpkiran24@gmail.com",
@@ -283,9 +291,9 @@ const PROFILE = {
   typed: ["keeps Azure running","builds on AWS","designs cloud architectures","cuts cloud bills","locks networks down","solves hybrid networking","writes it all down"],
   /* certifications under the name; [label, verification link, colour] */
   certs: [
-    ["AZ-104", "https://learn.microsoft.com/api/credentials/share/en-us/DeepakKiran-1752/C52A81C3A7FB2112?sharingId=C408EB6F565949BE", "blue"],
-    ["AZ-700", "https://learn.microsoft.com/api/credentials/share/en-us/DeepakKiran-1752/E98E3AB0C90055D1?sharingId=C408EB6F565949BE", "blue"],
-    ["DP-300", "https://learn.microsoft.com/api/credentials/share/en-us/DeepakKiran-1752/1AB150B7777B9DD3?sharingId=C408EB6F565949BE", "blue"],
+    ["AZ-104 Azure Administrator", "https://learn.microsoft.com/api/credentials/share/en-us/DeepakKiran-1752/C52A81C3A7FB2112?sharingId=C408EB6F565949BE", "blue"],
+    ["AZ-700 Azure Network Engineer", "https://learn.microsoft.com/api/credentials/share/en-us/DeepakKiran-1752/E98E3AB0C90055D1?sharingId=C408EB6F565949BE", "blue"],
+    ["DP-300 Azure Database Administrator", "https://learn.microsoft.com/api/credentials/share/en-us/DeepakKiran-1752/1AB150B7777B9DD3?sharingId=C408EB6F565949BE", "blue"],
     ["AWS Cloud Practitioner", "https://www.credly.com/earner/earned/badge/24ca0653-cea2-419a-bf17-a508c7694d18", "yellow"],
     ["AWS AI Practitioner", "https://www.credly.com/earner/earned/badge/6e761449-b7ca-4c90-b764-f8ff632a1e38", "yellow"]
   ]
@@ -316,16 +324,17 @@ $("#heroName").innerHTML=[...PROFILE.name].map(ch=>ch===" "?'<span class="sp"></
 ["#markName","#footName"].forEach(s=>$(s).textContent=PROFILE.name);
 $("#availability").textContent=PROFILE.availability;
 $("#emailTxt").textContent=PROFILE.email;
-["#liLink","#liLink2"].forEach(s=>$(s).href=PROFILE.linkedin);$("#ghLink").href=PROFILE.github;["#cvLink","#cvLink2"].forEach(s=>$(s).href=PROFILE.resume);
+$("#liLink2").href=PROFILE.linkedin;$("#ghLink").href=PROFILE.github;$("#cvLink2").href=PROFILE.resume;
 $("#sub").textContent=PROFILE.subline;
-$("#certs").innerHTML=PROFILE.certs.map(([t,u,c])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener" title="Verify ${esc(t)}"><i style="background:${COLORS[c]||COLORS.blue}"></i>${esc(t)}</a></li>`).join("");
+$("#intro").textContent=PROFILE.intro;
+$("#certs").innerHTML=PROFILE.certs.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener" title="Verify ${esc(t)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>${esc(t)}</a></li>`).join("");
 $("#guideList").innerHTML=GUIDES.map(g=>`<a class="guide rv" href="${esc(g.url)}" target="_blank" rel="noopener">
   <div class="shot"><img src="${esc(g.img)}" alt="Screenshot of ${esc(g.title)}" loading="lazy" width="1200" height="750"></div>
   <div class="guide-b"><span class="kicker"><i style="background:${COLORS[g.color]}"></i>${esc(g.kicker)}</span><h3>${esc(g.title)}</h3><p>${esc(g.text)}</p>
   <ul class="gtags">${g.tags.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
   <span class="go">Open the guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>`).join("");
 /* hide any button whose detail is not filled in */
-[["#copyEmail",PROFILE.email],["#liLink",PROFILE.linkedin],["#liLink2",PROFILE.linkedin],["#ghLink",PROFILE.github],["#cvLink",PROFILE.resume],["#cvLink2",PROFILE.resume]].forEach(([q,v])=>{if(!v||v==="#")$(q).hidden=true});
+[["#copyEmail",PROFILE.email],["#liLink2",PROFILE.linkedin],["#ghLink",PROFILE.github],["#cvLink2",PROFILE.resume]].forEach(([q,v])=>{if(!v||v==="#")$(q).hidden=true});
 $("#yr").textContent=new Date().getFullYear();
 
 /* typed role */
