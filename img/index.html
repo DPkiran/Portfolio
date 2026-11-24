@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deepak Kiran Y · Cloud Engineer</title>
+<meta name="description" content="Cloud engineer portfolio with free AWS and Microsoft 365 guides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg-2:#f6f7f9; --surface:#ffffff; --ink:#16181d; --ink-2:#454a54; --muted:#6b7280; --line:#e5e7eb;
+  --accent:#2563eb; --accent-soft:#eef3fe; --on-accent:#ffffff;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 12px rgba(16,24,40,.06);
+  --shadow-lg:0 2px 6px rgba(16,24,40,.06),0 18px 40px rgba(16,24,40,.12);
+  --gutter:clamp(18px,5vw,56px); --ease:cubic-bezier(.2,.8,.2,1);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1115; --bg-2:#151820; --surface:#181c24; --ink:#eceef2; --ink-2:#c3c8d1; --muted:#9097a3; --line:#2a2f3a;
+  --accent:#7aa7ff; --accent-soft:#18233a; --on-accent:#0b1424; --shadow:0 1px 2px rgba(0,0,0,.4); --shadow-lg:0 18px 40px rgba(0,0,0,.45); color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1115; --bg-2:#151820; --surface:#181c24; --ink:#eceef2; --ink-2:#c3c8d1; --muted:#9097a3; --line:#2a2f3a;
+  --accent:#7aa7ff; --accent-soft:#18233a; --on-accent:#0b1424; --shadow:0 1px 2px rgba(0,0,0,.4); --shadow-lg:0 18px 40px rgba(0,0,0,.45); color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 clamp(1rem,.96rem + .2vw,1.08rem)/1.6 "Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1120px,100% - 2*var(--gutter));margin-inline:auto}
+h1,h2,h3{font-family:"Outfit",system-ui,sans-serif;letter-spacing:-.02em;margin:0}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
+.bar.scrolled{border-bottom-color:var(--line)}
+.bar-in{display:flex;align-items:center;gap:8px;height:64px}
+.mark{font-family:"Outfit",sans-serif;font-weight:600;font-size:1.08rem;text-decoration:none;margin-right:auto}
+.nav a{text-decoration:none;font-size:.95rem;font-weight:500;color:var(--ink-2);padding:8px 12px;border-radius:999px}
+.nav a:hover{background:var(--bg-2);color:var(--ink)}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:none;background:transparent;display:grid;place-items:center;cursor:pointer;color:var(--ink-2)}
+.icon-btn:hover{background:var(--bg-2)}
+.icon-btn svg{width:20px;height:20px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:11px 20px;font:500 .95rem "Figtree",sans-serif;cursor:pointer;transition:background .15s,box-shadow .2s,transform .15s var(--ease)}
+.btn:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn svg{width:17px;height:17px}
+
+/* hero */
+.hero{min-height:calc(100svh - 64px);display:grid;align-items:center;padding:48px 0 64px}
+.hero-in{max-width:760px}
+.hello{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;color:var(--muted);margin-bottom:22px}
+.hello i{width:8px;height:8px;border-radius:50%;background:#16a34a}
+.name{font-size:clamp(2.8rem,8vw,5.4rem);font-weight:600;line-height:1.02}
+.role{font-size:clamp(1.15rem,1rem + .9vw,1.6rem);color:var(--ink-2);margin:18px 0 0;font-weight:500}
+.intro{color:var(--muted);max-width:60ch;margin:14px 0 20px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.certs{list-style:none;margin:0 0 28px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.certs a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:.84rem;font-weight:500;color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--surface);transition:border-color .15s,color .15s}
+.certs a:hover{border-color:var(--accent);color:var(--accent)}
+.certs svg{width:14px;height:14px;color:#16a34a}
+
+/* sections */
+.sec{padding:clamp(56px,9vw,112px) 0}
+.sec-alt{background:var(--bg-2)}
+.eyebrow{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.sec h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:600;line-height:1.12;margin:8px 0 10px}
+.lead{color:var(--ink-2);max-width:60ch;margin:0}
+
+/* project cards */
+.projects{display:grid;gap:clamp(18px,3vw,28px);margin-top:clamp(28px,4vw,44px)}
+.proj{display:grid;grid-template-columns:minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:box-shadow .3s var(--ease),transform .3s var(--ease),border-color .3s}
+.proj:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.shot{aspect-ratio:16/10;overflow:hidden;background:var(--bg-2);border-bottom:1px solid var(--line)}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s var(--ease)}
+.proj:hover .shot img{transform:scale(1.03)}
+.proj-b{padding:clamp(20px,3vw,32px);display:grid;gap:12px;align-content:center}
+.proj h3{font-size:clamp(1.35rem,2vw,1.7rem);font-weight:600}
+.proj p{margin:0;color:var(--ink-2)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.tags li{font-size:.8rem;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+.go{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--accent);margin-top:4px}
+.go svg{width:18px;height:18px;transition:transform .25s var(--ease)}
+.proj:hover .go svg{transform:translateX(4px)}
+@media (min-width:860px){
+  .proj{grid-template-columns:1.15fr 1fr}
+  .shot{aspect-ratio:auto;min-height:320px;border-bottom:none;border-right:1px solid var(--line)}
+  .proj:nth-child(even){grid-template-columns:1fr 1.15fr}
+  .proj:nth-child(even) .shot{order:2;border-right:none;border-left:1px solid var(--line)}
+}
+
+/* contact */
+.contact{text-align:center}
+.contact .lead{margin:0 auto 28px}
+.contact .actions{justify-content:center}
+.copied{min-height:1.4em;font-size:.9rem;color:#16a34a;margin-top:12px}
+footer{border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;padding:20px 0}
+.foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--ink)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (max-width:560px){.nav a{padding:8px 9px;font-size:.9rem}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="bar" id="bar">
+  <div class="wrap bar-in">
+    <a class="mark" href="#top" id="markName">Deepak Kiran Y</a>
+    <nav class="nav" aria-label="Main"><a href="#work">Guides</a><a href="#contact">Contact</a></nav>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch light or dark theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Introduction">
+    <div class="wrap">
+      <div class="hero-in">
+        <p class="hello rv"><i aria-hidden="true"></i><span id="availability">Open to new projects</span></p>
+        <h1 class="name rv" id="heroName">Deepak Kiran Y</h1>
+        <p class="role rv" id="role">Cloud Engineer · Azure &amp; Microsoft 365</p>
+        <p class="intro rv" id="intro">Cloud engineer learning in public: I turn what I learn about Azure, Microsoft 365 and AWS into guides anyone can use.</p>
+        <ul class="certs rv" id="certs" aria-label="Certifications"></ul>
+        <div class="actions rv">
+          <a class="btn primary" href="#work">See my guides</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt" id="work" aria-labelledby="workH">
+    <div class="wrap">
+      <span class="eyebrow rv">Guides</span>
+      <h2 class="rv" id="workH">What I&rsquo;ve learnt, shared as guides</h2>
+      <p class="lead rv">Free reference sites I built and keep updated as I learn. Use them, share them. Each one opens in a new tab.</p>
+      <div class="projects" id="projects"></div>
+    </div>
+  </section>
+
+  <section class="sec contact" id="contact" aria-labelledby="cH">
+    <div class="wrap">
+      <span class="eyebrow rv">Contact</span>
+      <h2 class="rv" id="cH">Let's talk</h2>
+      <p class="lead rv">Questions about my work, a role, or an Azure problem? I reply within a working day.</p>
+      <div class="actions rv">
+        <button class="btn primary" type="button" id="copyEmail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg><span id="emailTxt">you@example.com</span></button>
+        <a class="btn" id="liLink" href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" id="ghLink" href="#" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" id="cvLink" href="#" target="_blank" rel="noopener">Résumé</a>
+      </div>
+      <p class="copied" id="copied" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap foot"><span>© <span id="yr"></span> <span id="footName">Deepak Kiran Y</span></span><a href="#top">Back to top ↑</a></div></footer>
+
+<script>
+/* ═══ EDIT ME: your details ═══ */
+const PROFILE = {
+  name: "Deepak Kiran Y",
+  role: "Cloud Engineer · Azure & Microsoft 365",
+  intro: "Azure cloud engineer with 2+ years in client Azure and Microsoft 365 environments: hybrid networking, Zero Trust and security monitoring. I also turn what I learn into free guides anyone can use.",
+  availability: "Based in Chennai, India",
+  email: "dpkiran24@gmail.com",
+  linkedin: "https://www.linkedin.com/in/dpkiran",
+  github: "https://github.com/DPkiran",
+  resume: "Deepak-Kiran-Y-CV.pdf",  // the CV file in this folder; replace the file to update it
+  /* certifications shown under the intro; "url" is the verification link */
+  certs: [
+    ["AZ-104 Azure Administrator", "https://learn.microsoft.com/api/credentials/share/en-us/DeepakKiran-1752/C52A81C3A7FB2112?sharingId=C408EB6F565949BE"],
+    ["AZ-700 Azure Network Engineer", "https://learn.microsoft.com/api/credentials/share/en-us/DeepakKiran-1752/E98E3AB0C90055D1?sharingId=C408EB6F565949BE"],
+    ["DP-300 Azure Database Administrator", "https://learn.microsoft.com/api/credentials/share/en-us/DeepakKiran-1752/1AB150B7777B9DD3?sharingId=C408EB6F565949BE"],
+    ["AWS Cloud Practitioner", "https://www.credly.com/earner/earned/badge/24ca0653-cea2-419a-bf17-a508c7694d18"],
+    ["AWS AI Practitioner", "https://www.credly.com/earner/earned/badge/6e761449-b7ca-4c90-b764-f8ff632a1e38"]
+  ]
+};
+
+/* The guides. "url" is the folder next to this page. */
+const PROJECTS = [
+  { title: "AWS Field Guide", url: "aws-field-guide/", img: "img/aws.jpg",
+    text: "An interactive guide to AWS from an engineer's point of view: onboarding a new customer phase by phase, ten everyday service flows, and clickable networking, compute and security architectures with the settings to use and how to check them.",
+    tags: ["AWS", "Architecture", "Networking", "Security"] },
+  { title: "Microsoft 365 Reference Hub", url: "m365-hub/", img: "img/m365.jpg",
+    text: "Licensing plans, the Microsoft 365, Entra and Intune admin centres, Purview and a knowledge base, all in one searchable place, written the way I explain them to clients.",
+    tags: ["Microsoft 365", "Entra ID", "Intune", "Purview"] }
+];
+/* ═════════════════════════════ */
+(function(){
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.title=PROFILE.name+" · Cloud Engineer";
+["#markName","#heroName","#footName"].forEach(s=>$(s).textContent=PROFILE.name);
+$("#role").textContent=PROFILE.role;$("#intro").textContent=PROFILE.intro;$("#availability").textContent=PROFILE.availability;
+$("#emailTxt").textContent=PROFILE.email;$("#liLink").href=PROFILE.linkedin;$("#ghLink").href=PROFILE.github;$("#cvLink").href=PROFILE.resume;
+$("#certs").innerHTML=(PROFILE.certs||[]).map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener" title="Verify this certification"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>${esc(t)}</a></li>`).join("");
+/* hide any contact button whose detail is not filled in yet */
+[["#copyEmail",PROFILE.email],["#liLink",PROFILE.linkedin],["#ghLink",PROFILE.github],["#cvLink",PROFILE.resume]].forEach(([s,v])=>{if(!v||v==="#")$(s).hidden=true});
+$("#yr").textContent=new Date().getFullYear();
+
+$("#projects").innerHTML=PROJECTS.map(p=>`<a class="proj rv" href="${esc(p.url)}" target="_blank" rel="noopener">
+  <div class="shot"><img src="${esc(p.img)}" alt="Screenshot of ${esc(p.title)}" loading="lazy" width="1200" height="750"></div>
+  <div class="proj-b"><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p><ul class="tags">${p.tags.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
+  <span class="go">Open the guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>`).join("");
+
+$("#copyEmail").onclick=async()=>{try{await navigator.clipboard.writeText(PROFILE.email);$("#copied").textContent="Email copied: "+PROFILE.email}catch(e){location.href="mailto:"+PROFILE.email}};
+
+const root=document.documentElement;
+try{const t=localStorage.getItem("pf-theme");if(t)root.dataset.theme=t}catch(e){}
+$("#themeBtn").onclick=()=>{const dark=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;root.dataset.theme=dark?"light":"dark";try{localStorage.setItem("pf-theme",root.dataset.theme)}catch(e){}};
+
+const bar=$("#bar");
+new IntersectionObserver(([e])=>bar.classList.toggle("scrolled",!e.isIntersecting),{rootMargin:"-64px 0px 0px 0px"}).observe($("#heroName"));
+if("IntersectionObserver" in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".rv").forEach(el=>io.observe(el))}
+else document.querySelectorAll(".rv").forEach(el=>el.classList.add("in"));
+})();
+</script>
+</body>
+</html>
